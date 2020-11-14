@@ -1,3 +1,4 @@
+from POS import Sentence
 from Vader import Sentiment
 
 class Bio:
@@ -6,6 +7,7 @@ class Bio:
         self.title = title
         self.text = text
         self.meanness = self.assess_meanness()
+        self.generate_sentence()
 
     def assess_meanness(self):
         meanness = 1
@@ -13,15 +15,21 @@ class Bio:
             self.text
         )["compound"]
         if sentiment < -.5:
-            meanness = 4
+            meanness = "mean"
         elif sentiment < -.25:
-            meanness = 3
+            meanness = "kinda mean"
         elif sentiment < .25:
-            meanness = 2
+            meanness = "kinda nice"
         elif sentiment > .25:
-            meanness = 1
-        print(sentiment) 
+            meanness = "nice"
         return meanness
 
     def generate_sentence(self):
-        pass
+        sents = Sentence.make(self.text)
+        print(f"Main meanness: {self.meanness}")
+        for sent in sents:
+            print(Sentiment.classify(
+                sent
+            )["compound"]
+            )
+        print(sents)

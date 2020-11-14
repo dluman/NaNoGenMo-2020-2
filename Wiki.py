@@ -12,14 +12,14 @@ class Entry:
             i for i in range(-33,20) if i != 0
         ]
         self.get_entry()
-    
+
     def suffix(self,cent):
         cent = str(
             abs(
                 cent
             )
         )
-        
+
         if int(cent) in range(10,19):
             cent += "th"
         elif cent[-1] == "1":
@@ -30,7 +30,7 @@ class Entry:
             cent += "rd"
         else:
             cent += "th"
-            
+
         return cent
 
     def adbc(self,cent):
@@ -54,7 +54,7 @@ class Entry:
         links = refs.find_all('a')
         for link in links:
             href = link.get("href")
-            if href.lower() not in ["list","wikipedia"]:
+            if "list" not in href.lower() and "wikipedia" not in href.lower():
                 kings.append(href)
         return kings
         
