@@ -1,0 +1,24 @@
+from Vader import Sentiment
+
+class Bio:
+
+    def __init__(self, title, text):
+        self.title = title
+        self.text = text
+        self.meanness = self.assess_meanness()
+
+    def assess_meanness(self):
+        meanness = 0
+        sentiment = Sentiment.classify(self.text)["compound"]
+        if sentiment < -.5:
+            meanness = "mean"
+        elif sentiment < 0:
+            meanness = "
+        elif sentiment < .25:
+            meanness = 2
+        elif sentiment > .25:
+            meanness = 1
+        return meanness
+
+    def generate_sentence(self):
+        pass
