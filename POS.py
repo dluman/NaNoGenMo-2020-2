@@ -26,6 +26,8 @@ class Sentence:
         sents = [sent for sent in sents if sent.lower().count("wikipedia") < 1]
         sents = [sent for sent in sents if not "stub" in sent]
         sents = [sent for sent in sents if not "p. " in sent]
+        sents = [sent for sent in sents if not "=" in sent]
+        sents = [sent for sent in sents if not "php" in sent]
         return sents
 
     @staticmethod

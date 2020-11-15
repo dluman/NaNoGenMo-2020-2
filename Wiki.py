@@ -60,8 +60,12 @@ class Entry:
         return kings
         
     def get_entry(self):
+        king = ""
         kings = self.get_rulers()
-        king = random.choice(kings)
+        try:
+            king = random.choice(kings)
+        except IndexError:
+            pass
         url = f"https://en.wikipedia.org/{king}"
         page = requests.get(url)
         soupy = bs.BeautifulSoup(page.text,features="html.parser")

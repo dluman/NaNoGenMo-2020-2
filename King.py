@@ -21,7 +21,7 @@ class Bio:
             text
         )["compound"]
         mean_index = math.ceil(sentiment * 4)/4
-        print(sentiment, mean_index)
+        #print(sentiment, mean_index)
         return Templates.MEANNESS[mean_index]
 
     def generate_entry(self):
