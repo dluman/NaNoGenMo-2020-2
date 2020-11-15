@@ -1,6 +1,8 @@
 import nltk
 import re
 
+from markovchain.text import MarkovText
+
 class Sentence:
 
     @staticmethod
@@ -18,14 +20,21 @@ class Sentence:
         sents = [sent.replace("\r"," ").replace("\n"," ") for sent in sents]
         sents = [re.sub(r"\^(\s)?","",sent) for sent in sents]
         sents = [re.sub(r"\[[0-9]{1,}\]","",sent) for sent in sents]
-        sents = [re.sub(r"\[[a-zA-Z\.]{1,}\]","",sent) for sent in sents]
+        sents = [re.sub(r"\[[a-zA-Z\.\s]{1,}\]","",sent) for sent in sents]
         sents = [sent.lstrip().rstrip() for sent in sents]
         sents = [sent for sent in sents if len(sent) > 30]
         sents = [sent for sent in sents if sent.lower().count("wikipedia") < 1]
+        sents = [sent for sent in sents if not "stub" in sent]
+        sents = [sent for sent in sents if not "p. " in sent]
         return sents
 
     @staticmethod
     def make(text):
+        #markov_text = ""
+        #markov = MarkovText()
+        #markov.data(text)
+        #for i in range(30):
+            #markov_text += markov()
         sents = nltk.tokenize.sent_tokenize(text)
         sents = Sentence.remove_meta(sents)
         sents = [sent for sent in sents if Sentence.contains_verb(sent)]

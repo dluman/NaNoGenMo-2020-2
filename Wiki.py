@@ -1,5 +1,6 @@
 import bs4 as bs
 import random
+import re
 import requests
 import wikipedia
 
@@ -67,5 +68,11 @@ class Entry:
         hdg = soupy.find(id="firstHeading").contents
         text = soupy.find(id="mw-content-text").get_text()
         
-        self.title = hdg
-        self.text = text
+        self.title = [self.remove_title_parens(hdg)]
+        self.text = self.remove_unwanted_sections(text)
+
+    def remove_title_parens(self, title):
+        return re.sub(r"\([a-zA-Z0-9]{1,}\)","",title[0])
+
+    def remove_unwanted_sections(self, text):
+        return re.sub(r"References(.*)$","",text)

@@ -21,13 +21,13 @@ MEANNESS = {
         "Now that was one mean king."
     ],
     -.75: [
-        "Not the meanest as they come, but let's say they had more bad days than good."
+        "Now that was one mean king."
     ],
     -.50: [
-        "Was known to have a pretty regular mean streak."
+        "Not the meanest as they come, but let's say they had more bad days than good."
     ],
     -.25: [
-        "Normally pretty mean, but sometimes wasn't so bad."
+        "Was known to have a pretty regular mean streak."
     ],
     0: [
         "This king was the vanilla of meanness."
@@ -42,6 +42,6 @@ MEANNESS = {
         "Pretty nice as far as kings go."
     ],
     1.00: [
-        "I'd go so far as to say \"pretty benevolent\" all-told."
+        "I'd go so far as to say \"pretty benevolent\", all-told."
     ]
 }
